@@ -1,0 +1,70 @@
+[ VIRTUAL MACHINE SETUP ]
+This file describes the process for setting up a (Debian GNU/Linux 10) Virtual Machine.
+It contains a list of dependencies, configurations and commands to be run.
+
+[ Manually Installed Software ]
+- sudo								apt
+- xserver-xorg-core		Display Manager			apt
+- xfce4[]			Desktop Environment		apt[]
+	- thunar
+	- xfdesktop4
+	- xfwm4			Window Manager
+	- xfce4-settings
+	- xfce4-session
+	- xfconf
+	- xfce4-notifyd
+	- xfce4-terminal
+	- xfce4-appfinder
+	- xfce4-panel
+- lightdm			Display Manager				apt
+- gcc				// For building modules			apt
+- make				// For building modules			apt
+- linux-headers-4.19.0-8-amd64						apt
+- Guest Additions (sh)							virtualbox
+- gedit									apt
+- firefox-esr								apt
+- snapd									apt
+- unzip									apt
+- lightdm-gtk-greeter-settings						apt
+- apache2								apt
+- python3-pip								apt
+- libapache2-mod-wsgi-py3						apt
+- apache2-dev								apt
+
+[ MongoDB ] v4.2.6
+**localhost with default port 27017
+- sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 4B7C549A058F8B6B
+- echo "deb http://repo.mongodb.org/apt/debian "$(lsb_release -sc)"/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb.list
+- sudo apt install mongodb-org
+- sudo systemctl start/enable mongod.service
+- mongo
+- use cromaDB
+# example create collection
+- db.my_collection.insert({my_key: "my value"})
+# example create user
+- db.createUser({user: "croma", pwd: "mycromadb", roles: [ { role: "readWrite", db: "cromaDB" } ]})
+- show collections
+- db.my_collection.find()
+https://docs.mongodb.com/manual/mongo/
+https://docs.mongodb.com/manual/reference/mongo-shell/
+https://www.shellhacks.com/mongodb-create-database-and-user-mongo-shell/
+
+[ WEBOTS (Debian (VM)) ] some actions might be optional
+- webots (https://www.cyberbotics.com/) (.deb)
+  "sudo apt install /path/to/webots_2020a-rev1_amd64.deb"
+  start webots with "webots"
+"sudo -H pip3 install --upgrade pip"
+"sudo -H pip3 install websocket-client tornado nvidia-ml-py3 psutil requests distro"
+- firejail								apt
+- libqt5gui5								apt
+!! VirtualBox requires the use of the "VBoxSVGA" Graphics Controller for OpenGL 3+
+- mesa-utils (handy for checking openGL version				apt"
+  glxinfo | grep "OpenGL version"
+
+
+
+[ Installed python3-pip Packages ]
+- Flask
+- mod-wsgi
+- Flask-PyMongo
+- websockets
