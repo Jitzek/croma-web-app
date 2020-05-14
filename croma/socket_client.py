@@ -54,7 +54,6 @@ class SocketClient():
         return True
 
     def send(self, json):
-        print(_thread.get_ident())
         try:
             self.ws.send(json)
             self.connected = True
