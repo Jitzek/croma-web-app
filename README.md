@@ -1,5 +1,5 @@
 # croma-web-app<br>
->>this project has been discontinued in favor of croma-web-site (https://github.com/Jitzek/croma-web-site)<<
+>this project has been discontinued in favor of croma-web-site (https://github.com/Jitzek/croma-web-site)
 
 Web Application for the Croma Webots Simulation.<br>
 Please read the readme.txt placed inside the root folder of the project containing usage information.<br>
